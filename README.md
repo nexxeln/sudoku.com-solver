@@ -12,11 +12,12 @@
 ## Usage
 
 - Clone the repository: `git clone https://github.com/nexxeln/sudoku.com-solver`
-- Install the dependencies: `pip install -r requirements.txt`
+- Create a new virtual environment: `python -m venv venv`
 - Activate the virtual environment <br />
   - Windows: `venv/Scripts/activate`
   - Linux: `venv/bin/activate`
   - MacOS: `venv/bin/activate`
+- Install the dependencies: `pip install -r requirements.txt`
 - Go to [sudoku.com](https://sudoku.com) and solve the puzzle and create a new game
 - Run the program: `python sudoku.py`
 - Enter all the rows of the puzzle in the terminal, for the spaces enter `0` <br />
