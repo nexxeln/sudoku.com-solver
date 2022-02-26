@@ -16,6 +16,7 @@ while True:
 
     if len(grid) == 9:
         print("Row 9 complete")
+        print("Click on the first cell!")
         break
     print(f"Row {str(len(grid))} complete")
 
