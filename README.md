@@ -2,7 +2,7 @@
 
 ## Built with
 
-- Python
+- [Python](https://python.org)
 - [PyAutoGUI](https://github.com/asweigart/pyautogui)
 
 ## Prerequisites
