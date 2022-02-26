@@ -88,5 +88,6 @@ def solve():
     fill(grid)
     input("Solved")
 
-# solve the sudoku
-solve()
+if __name__ == "__main__":
+    # solve the sudoku
+    solve()
