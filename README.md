@@ -23,7 +23,8 @@
   ![terminal](https://github.com/nexxeln/sudoku.com-solver/blob/main/images/sudoku_input.png?raw=true)
 - Click on the first cell of the puzzle to start solving within 10 seconds
   ![click](https://github.com/nexxeln/sudoku.com-solver/blob/main/images/sudoku_click.png?raw=true)
-- Wait for the magic to happen
+- Do not mess with your mouse or press any keys until the program finishes
+- Wait for the magic to happen ;)
 
 ## Contributing
 
