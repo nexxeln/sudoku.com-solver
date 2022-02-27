@@ -18,7 +18,7 @@
   - Linux: `venv/bin/activate`
   - MacOS: `venv/bin/activate`
 - Install the dependencies: `pip install -r requirements.txt`
-- Go to [sudoku.com](https://sudoku.com) and solve the puzzle and create a new game
+- Go to [sudoku.com](https://sudoku.com) and create a new game
 - Run the program: `python sudoku.py`
 - Enter all the rows of the puzzle in the terminal, for the spaces enter `0` <br />
   ![terminal](https://github.com/nexxeln/sudoku.com-solver/blob/main/images/sudoku_input.png?raw=true)
