@@ -55,6 +55,7 @@ def fill(matrix):
     """
     final = []
     str_fin = []
+    
     for i in range(9):
         final.append(matrix[i])
 
