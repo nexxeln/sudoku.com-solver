@@ -1,6 +1,7 @@
 # imports
 import pyautogui as pg
 import time
+import sys
 
 # initialize grid
 grid = []
@@ -22,7 +23,7 @@ while True:
 
 # give the user a few seconds to click on the initial square
 time.sleep(10)
-
+print("Solving...")
 
 def possible(x, y, n):
     """
@@ -88,7 +89,8 @@ def solve():
                         grid[y][x] = 0
                 return
     fill(grid)
-    input("Solved")
+    print("Solved!")
+    sys.exit()
 
 
 if __name__ == "__main__":
