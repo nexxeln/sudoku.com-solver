@@ -22,7 +22,7 @@
 - Run the program: `python sudoku.py`
 - Enter all the rows of the puzzle in the terminal, for the empty cells enter `0` <br />
   ![terminal](https://github.com/nexxeln/sudoku.com-solver/blob/main/images/sudoku_input.png?raw=true)
-- Click on the first cell of the puzzle to start solving within 10 seconds
+- Click on the first cell of the puzzle within 10 seconds to start solving
   ![click](https://github.com/nexxeln/sudoku.com-solver/blob/main/images/sudoku_click.png?raw=true)
 - Do not mess with your mouse or press any keys until the program finishes
 - Wait for the magic to happen ;)
