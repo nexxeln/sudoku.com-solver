@@ -1,6 +1,5 @@
 import time
 import sys
-
 import numpy as np
 import pyautogui as pg
 
@@ -13,6 +12,7 @@ class SudokuSolver:
 
     def _take_input(self):
         row_number = 1
+
         while True:
             row = list(input("Enter the row: "))
             ints = [int(n) for n in row if n.isdigit()]
@@ -24,6 +24,7 @@ class SudokuSolver:
             for i in ints:
                 self.grid[row_number - 1][ints.index(i)] = i
             print(f"Row {row_number} filled")
+
             if row_number == 9:
                 print("All grids filled, solving...")
                 break
@@ -68,6 +69,7 @@ class SudokuSolver:
             for Y in range(y0, y0 + 3):
                 if self.grid[Y][X] == n:
                     return False
+
         return True
 
     def solve(self):
@@ -83,6 +85,7 @@ class SudokuSolver:
                             self.solve()
                             self.grid[y][x] = 0
                     return
+                    
         self._fill(self.grid)
         print("Solved!")
         sys.exit()
