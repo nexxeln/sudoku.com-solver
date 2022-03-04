@@ -4,6 +4,7 @@
 
 - [Python](https://python.org)
 - [PyAutoGUI](https://github.com/asweigart/pyautogui)
+- [NumPy](https://numpy.org/)
 
 ## Prerequisites
 
