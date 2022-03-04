@@ -11,6 +11,9 @@ class SudokuSolver:
         self._take_input()
 
     def _take_input(self):
+        """
+        take input from the user
+        """
         row_number = 1
 
         while True:
@@ -26,7 +29,9 @@ class SudokuSolver:
             print(f"Row {row_number} filled")
 
             if row_number == 9:
-                print("All grids filled, solving...")
+                print("All grids filled")
+                time.sleep(1)
+                print("Please click on the first cell of the grid")
                 break
             row_number += 1
 
@@ -39,6 +44,7 @@ class SudokuSolver:
 
         counter = []
 
+        # fill the grid by pressing the numbers
         for num in final:
             pg.typewrite(str(int(num)))
             pg.hotkey("right")
@@ -74,7 +80,7 @@ class SudokuSolver:
 
     def solve(self):
         """
-        solves the sudoku using backtracking
+        solves sudoku using backtracking
         """
         for y in range(9):
             for x in range(9):
@@ -93,6 +99,6 @@ class SudokuSolver:
 
 if __name__ == "__main__":
     solver = SudokuSolver()
-    time.sleep(5)
+    time.sleep(8.5)
     print("Solving...")
     solver.solve()
