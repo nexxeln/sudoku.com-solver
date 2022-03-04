@@ -33,12 +33,13 @@ class SudokuSolver:
         """
         fills the grid with the numbers in the matrix
         """
+        print("Filling the grid")
         final = [i for i in matrix.flatten()]
 
         counter = []
 
         for num in final:
-            pg.press(str(num))
+            pg.typewrite(str(int(num)))
             pg.hotkey("right")
             counter.append(num)
             if len(counter) % 9 == 0:
