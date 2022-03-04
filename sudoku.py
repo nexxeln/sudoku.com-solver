@@ -1,99 +1,95 @@
-# imports
-import pyautogui as pg
 import time
 import sys
 
-# initialize grid
-grid = []
+import numpy as np
+import pyautogui as pg
 
-# input the rows of the grid
-while True:
-    row = list(input("Row: "))
-    ints = []
 
-    for n in row:
-        ints.append(int(n))
-    grid.append(ints)
+class SudokuSolver:
+    def __init__(self) -> None:
+        # initialize grid
+        self.grid = np.array(np.zeros((9, 9)))
+        self._take_input()
 
-    if len(grid) == 9:
-        print("Row 9 complete")
-        print("Click on the first cell!")
-        break
-    print(f"Row {str(len(grid))} complete")
+    def _take_input(self):
+        row_number = 1
+        while True:
+            row = list(input("Enter the row: "))
+            ints = [int(n) for n in row if n.isdigit()]
 
-# give the user a few seconds to click on the initial square
-time.sleep(10)
-print("Solving...")
+            if len(ints) != 9:
+                print("Invalid input, please try again")
+                continue
 
-def possible(x, y, n):
-    """
-    checks if the number n is possible in the given row, column, and 3x3 square
-    """
-    # check row
-    for i in range(0, 9):
-        if grid[i][x] == n and i != y:
-            return False
+            for i in ints:
+                self.grid[row_number - 1][ints.index(i)] = i
+            print(f"Row {row_number} filled")
+            if row_number == 9:
+                print("All grids filled, solving...")
+                break
+            row_number += 1
 
-    # check column
-    for i in range(0, 9):
-        if grid[y][i] == n and i != x:
-            return False
+    def _fill(self, matrix):
+        """
+        fills the grid with the numbers in the matrix
+        """
+        print("Filling the grid")
+        final = [i for i in matrix.flatten()]
 
-    # check 3x3 square
-    x0 = (x // 3) * 3
-    y0 = (y // 3) * 3
-    for X in range(x0, x0 + 3):
-        for Y in range(y0, y0 + 3):
-            if grid[Y][X] == n:
+        counter = []
+
+        for num in final:
+            pg.typewrite(str(int(num)))
+            pg.hotkey("right")
+            counter.append(num)
+            if len(counter) % 9 == 0:
+                pg.hotkey("down")
+                for _ in range(9):
+                    pg.hotkey("left")         
+
+    def _possible(self, x, y, n):
+        """
+        checks if the number n is possible in the given row, column, and 3x3 square
+        """
+        # check row
+        for i in range(0, 9):
+            if self.grid[i][x] == n and i != y:
                 return False
-    return True
 
+        # check column
+        for i in range(0, 9):
+            if self.grid[y][i] == n and i != x:
+                return False
 
-def fill(matrix):
-    """
-    fills the grid with the numbers in the matrix
-    """
-    final = []
-    str_fin = []
-    
-    for i in range(9):
-        final.append(matrix[i])
+        # check 3x3 square
+        x0 = (x // 3) * 3
+        y0 = (y // 3) * 3
+        for X in range(x0, x0 + 3):
+            for Y in range(y0, y0 + 3):
+                if self.grid[Y][X] == n:
+                    return False
+        return True
 
-    for lists in final:
-        for num in lists:
-            str_fin.append(str(num))
-
-    counter = []
-
-    for num in str_fin:
-        pg.press(num)
-        pg.hotkey("right")
-        counter.append(num)
-        if len(counter) % 9 == 0:
-            pg.hotkey("down")
-            for _ in range(8):
-                pg.hotkey("left")
-
-
-def solve():
-    """
-    solves the sudoku using backtracking
-    """
-    global grid
-    for y in range(9):
-        for x in range(9):
-            if grid[y][x] == 0:
-                for n in range(1, 10):
-                    if possible(x, y, n):
-                        grid[y][x] = n
-                        solve()
-                        grid[y][x] = 0
-                return
-    fill(grid)
-    print("Solved!")
-    sys.exit()
+    def solve(self):
+        """
+        solves the sudoku using backtracking
+        """
+        for y in range(9):
+            for x in range(9):
+                if self.grid[y][x] == 0:
+                    for n in range(1, 10):
+                        if self._possible(x, y, n):
+                            self.grid[y][x] = n
+                            self.solve()
+                            self.grid[y][x] = 0
+                    return
+        self._fill(self.grid)
+        print("Solved!")
+        sys.exit()
 
 
 if __name__ == "__main__":
-    # solve the sudoku
-    solve()
+    solver = SudokuSolver()
+    time.sleep(5)
+    print("Solving...")
+    solver.solve()
